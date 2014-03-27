@@ -35,6 +35,10 @@ jQuery Share Plugin
         <a href="http://www.bestbuy.com/" data-shares="google">Bestbuy to Google Plus</a>
         <span></span>
     </div>
+    <div>
+        <a href="http://www.espn.com/" data-shares="pinterest">ESPN to Pinterest</a>
+        <span></span>
+    </div>
 </body>
 </html>
 ```

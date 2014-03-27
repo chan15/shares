@@ -43,6 +43,16 @@ jQuery Share Plugin
 </html>
 ```
 
+### Options
+- `counts` - this is the share count number request option, if the api has service, it will apear the number in the target you ask
+
+### What We Have Now
+
+- Facebook
+- Twiiter
+- Google Plus
+- Pinterest
+
 ### Customize CSS
 
 ![](https://lh6.googleusercontent.com/-iUu0XBcRUjI/UzOt8cAxzjI/AAAAAAAA89s/wBJfrb1gNEM/s473/shares_result.png)

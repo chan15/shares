@@ -42,3 +42,7 @@ jQuery Share Plugin
 </body>
 </html>
 ```
+
+### Customize CSS
+
+![](https://lh6.googleusercontent.com/-iUu0XBcRUjI/UzOt8cAxzjI/AAAAAAAA89s/wBJfrb1gNEM/s473/shares_result.png)

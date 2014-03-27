@@ -2,6 +2,7 @@
 $countUrls['facebook'] = 'https://api.facebook.com/method/fql.query?format=json&query=';
 $countUrls['twitter'] = 'http://urls.api.twitter.com/1/urls/count.json?url=';
 $countUrls['google'] = 'https://clients6.google.com/rpc';
+$countUrls['pinterest'] = 'http://api.pinterest.com/v1/urls/count.json?callback=receiveCount&url=';
 
 $type = $_GET['type'];
 $url = $_GET['url'];
@@ -15,7 +16,7 @@ switch ($type) {
         echo intval($result[0]['share_count']);
         break;
     case 'twitter':
-        $result = file_get_contents($countUrls[$type] . $url);
+        $result = file_get_contents($countUrls[$type] . urlencode($url));
         $result = json_decode($result, true);
         echo intval($result['count']);
         break;
@@ -31,5 +32,11 @@ switch ($type) {
         curl_close ($curl);
         $result = json_decode($curl_results, true);
         echo intval($result[0]['result']['metadata']['globalCounts']['count']);
+        break;
+    case 'pinterest':
+        $result = file_get_contents($countUrls[$type] . urlencode($url));
+        $result = preg_replace('/^receiveCount\((.*)\)$/', "\\1", $result);
+        $result = json_decode($result, true);
+        echo $result['count'];
         break;
 }

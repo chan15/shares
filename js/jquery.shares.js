@@ -10,12 +10,14 @@
         countable = [
             'facebook',
             'twitter',
-            'google'
+            'google',
+            'pinterest'
         ];
         shareUrls = [
             {'name': 'facebook', 'url': 'http://www.facebook.com/sharer.php?u='},
             {'name': 'twitter', 'url': 'http://twitter.com/share?url='},
             {'name': 'google', 'url': 'https://plus.google.com/share?url='},
+            {'name': 'pinterest', 'url': 'http://pinterest.com/pin/create/button/?url='},
         ];
 
         return this.each(function(options) {
@@ -31,7 +33,7 @@
             $.each(shareUrls, function(key, item) {
                 if (type === item.name) {
                     check = true;
-                    shareUrl = item.url + url;
+                    shareUrl = item.url + encodeURI(url);
 
                     btn.on('click', function() {
                         window.open(shareUrl, '', 'width=' + width + ', height=' + height + ', left=' + left + ', top=' + top);

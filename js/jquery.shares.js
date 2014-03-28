@@ -23,6 +23,7 @@
         return this.each(function(options) {
             var type = $(this).attr('data-shares'),
                 url = $(this).prop('href'),
+                image = $(this).attr('data-image'),
                 shareUrl = '',
                 width = 500,
                 height = 360,
@@ -32,8 +33,15 @@
 
             $.each(shareUrls, function(key, item) {
                 if (type === item.name) {
-                    check = true;
                     shareUrl = item.url + encodeURI(url);
+
+                    switch (type) {
+                        case 'pinterest':
+                            if (undefined !== image) {
+                                shareUrl += '&media=' + image;
+                            }
+                            break;
+                    }
 
                     btn.on('click', function() {
                         window.open(shareUrl, '', 'width=' + width + ', height=' + height + ', left=' + left + ', top=' + top);

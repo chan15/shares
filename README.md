@@ -36,12 +36,17 @@ jQuery Share Plugin
         <span></span>
     </div>
     <div>
-        <a href="http://www.espn.com/" data-shares="pinterest">ESPN to Pinterest</a>
+        <a href="http://www.espn.com/" data-shares="pinterest" data-image="http://a.espncdn.com/photo/2014/0327/nfl_divisional1_288x75.jpg">ESPN to Pinterest</a>
         <span></span>
     </div>
 </body>
 </html>
 ```
+
+### Properties
+
+- `data-shares` - social network type
+- `data-image` - default image, only for Pinterest now
 
 ### Options
 - `counts` - this is the share count number request option, if the api has service, it will apear the number in the target you ask

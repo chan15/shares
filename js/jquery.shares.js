@@ -38,7 +38,7 @@
                     switch (type) {
                         case 'pinterest':
                             if (undefined !== image) {
-                                shareUrl += '&media=' + image;
+                                shareUrl += '&media=' + image + '&description=';
                             }
                             break;
                     }

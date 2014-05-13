@@ -11,12 +11,12 @@ switch ($type) {
     case 'facebook':
         $fql  = "SELECT share_count FROM link_stat WHERE url = '" . $url . "'";
         $apifql= $countUrls[$type] . urlencode($fql);
-        $result = file_get_contents($apifql);
+        $result = getContent($apifql);
         $result = json_decode($result, true);
         echo intval($result[0]['share_count']);
         break;
     case 'twitter':
-        $result = file_get_contents($countUrls[$type] . urlencode($url));
+        $result = getContent($countUrls[$type] . urlencode($url));
         $result = json_decode($result, true);
         echo intval($result['count']);
         break;
@@ -34,9 +34,21 @@ switch ($type) {
         echo intval($result[0]['result']['metadata']['globalCounts']['count']);
         break;
     case 'pinterest':
-        $result = file_get_contents($countUrls[$type] . urlencode($url));
+        $result = getContent($countUrls[$type] . urlencode($url));
         $result = preg_replace('/^receiveCount\((.*)\)$/', "\\1", $result);
         $result = json_decode($result, true);
         echo $result['count'];
         break;
+}
+
+function getContent($url) {
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_HEADER, 0);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+    $result = curl_exec($ch);
+    curl_close($ch);
+
+    return $result;
 }
